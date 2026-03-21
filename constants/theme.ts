@@ -1,53 +1,74 @@
-/**
- * Below are the colors that are used in the app. The colors are defined in the light and dark mode.
- * There are many other ways to style your app. For example, [Nativewind](https://www.nativewind.dev/), [Tamagui](https://tamagui.dev/), [unistyles](https://reactnativeunistyles.vercel.app), etc.
- */
+import { StyleSheet } from 'react-native';
 
-import { Platform } from 'react-native';
-
-const tintColorLight = '#0a7ea4';
-const tintColorDark = '#fff';
-
-export const Colors = {
-  light: {
-    text: '#11181C',
-    background: '#fff',
-    tint: tintColorLight,
-    icon: '#687076',
-    tabIconDefault: '#687076',
-    tabIconSelected: tintColorLight,
-  },
-  dark: {
-    text: '#ECEDEE',
-    background: '#151718',
-    tint: tintColorDark,
-    icon: '#9BA1A6',
-    tabIconDefault: '#9BA1A6',
-    tabIconSelected: tintColorDark,
-  },
+export const Colors = 
+{
+  primary: '#007AFF',     // Το βασικό μπλε
+  secondary: '#5856D6',   // Ένα μωβ-μπλε για ποικιλία
+  background: '#F2F2F7',  // Ελαφρύ γκρι για το φόντο των σελίδων
+  surface: '#FFFFFF',     // Λευκό για τις κάρτες/inputs
+  text: '#1C1C1E',        // Σχεδόν μαύρο για κείμενο
+  subtext: '#8E8E93',     // Γκρι για δευτερεύον κείμενο
+  error: '#FF3B30',       // Κόκκινο για σφάλματα
+  border: '#C7C7CC',      // Γκρι για περιγράμματα
 };
 
-export const Fonts = Platform.select({
-  ios: {
-    /** iOS `UIFontDescriptorSystemDesignDefault` */
-    sans: 'system-ui',
-    /** iOS `UIFontDescriptorSystemDesignSerif` */
-    serif: 'ui-serif',
-    /** iOS `UIFontDescriptorSystemDesignRounded` */
-    rounded: 'ui-rounded',
-    /** iOS `UIFontDescriptorSystemDesignMonospaced` */
-    mono: 'ui-monospace',
+export const globalStyles = StyleSheet.create({
+  container: 
+  {
+    flex: 1,
+    backgroundColor: Colors.background,
+    padding: 20,
   },
-  default: {
-    sans: 'normal',
-    serif: 'serif',
-    rounded: 'normal',
-    mono: 'monospace',
+  centered: 
+  {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
   },
-  web: {
-    sans: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
-    serif: "Georgia, 'Times New Roman', serif",
-    rounded: "'SF Pro Rounded', 'Hiragino Maru Gothic ProN', Meiryo, 'MS PGothic', sans-serif",
-    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+  input: 
+  {
+    backgroundColor: Colors.surface,
+    borderWidth: 1,
+    borderColor: Colors.border,
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 15,
+    fontSize: 16,
+    color: Colors.text,
   },
+  primaryButton: 
+  {
+    backgroundColor: Colors.primary,
+    padding: 16,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3, // Για σκιά σε Android
+  },
+  buttonText: 
+  {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  title: 
+  {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: Colors.text,
+    textAlign: 'center',
+    marginBottom: 30,
+  },
+  linkText: 
+  {
+    color: Colors.primary,
+    textAlign: 'center',
+    marginTop: 15,
+    fontSize: 14,
+  }
 });
