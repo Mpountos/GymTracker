@@ -15,13 +15,13 @@ export default function RegisterScreen()
   const handleRegister = async () => {
     if (!email || !password) 
     {
-      Alert.alert('Σφάλμα', 'Παρακαλώ συμπληρώστε όλα τα πεδία.');
+      Alert.alert('Error', 'Empty inputs.');
       return;
     }
 
     if (password.length < 6)
     {
-      Alert.alert('Σφάλμα', 'Ο κωδικός πρέπει να είναι τουλάχιστον 6 χαρακτήρες.');
+      Alert.alert('Error', 'The password must be 6 or more characters.');
       return;
     }
 
@@ -30,19 +30,17 @@ export default function RegisterScreen()
     {
       console.log("Προσπάθεια εγγραφής...");
       await createUserWithEmailAndPassword(auth, email, password);
-      
-      console.log("✅ Εγγραφή επιτυχής! Ανακατεύθυνση...");
-      
-      Alert.alert('Επιτυχία!', 'Ο λογαριασμός δημιουργήθηκε.', [{ text: 'OK', onPress: () => router.replace('/(tabs)') }]);
+      console.log("Εγγραφή επιτυχής! Ανακατεύθυνση...");
+      Alert.alert('Success!', 'Account Created.', [{ text: 'OK', onPress: () => router.replace('/(tabs)') }]);
     } 
     catch (error: any) 
     {
       console.error("Σφάλμα εγγραφής:", error.code);
       let errorMessage = 'Κάτι πήγε στραβά.';
-      if (error.code === 'auth/email-already-in-use') errorMessage = 'Το email χρησιμοποιείται ήδη.';
-      if (error.code === 'auth/invalid-email') errorMessage = 'Το email δεν είναι έγκυρο.';
+      if (error.code === 'auth/email-already-in-use') errorMessage = 'email already in use.';
+      if (error.code === 'auth/invalid-email') errorMessage = 'email does not exist.';
       
-      Alert.alert('Σφάλμα Εγγραφής', errorMessage);
+      Alert.alert('Error', errorMessage);
     } 
     finally 
     {
@@ -53,7 +51,7 @@ export default function RegisterScreen()
   return (
     <View style={globalStyles.container}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
-        <Text style={globalStyles.title}>Νέος Λογαριασμός</Text>
+        <Text style={globalStyles.title}>New Account</Text>
         
         <TextInput
           style={globalStyles.input}
@@ -67,7 +65,7 @@ export default function RegisterScreen()
         
         <TextInput
           style={globalStyles.input}
-          placeholder="Κωδικός (6+ χαρακτήρες)"
+          placeholder="Password (6+ characters)"
           placeholderTextColor={Colors.subtext}
           value={password}
           onChangeText={setPassword}

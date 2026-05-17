@@ -70,5 +70,48 @@ export const globalStyles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 15,
     fontSize: 14,
-  }
+  },
+
+
+  bigIcons: 
+  {
+    fontSize: 24,
+    color: Colors.primary,
+  },
+  trashIcons:
+  {
+    fontSize: 24,
+    color: '#fff'  
+  },
+  trashAction: 
+  {
+    backgroundColor: Colors.error,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 80,
+    height: '100%',  
+  },
+
+  modalOverlay:
+  { 
+      flex: 1, 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      backgroundColor: 'rgba(0,0,0,0.5)' 
+  },
+  modalContent: 
+  { 
+      width: '85%', 
+      backgroundColor: '#fff', 
+      padding: 25, 
+      borderRadius: 20, 
+      alignItems: 'center' 
+  },
+  modalTitle: 
+  { 
+      fontSize: 18, 
+      fontWeight: 'bold', 
+      marginBottom: 20, 
+      textAlign: 'center' 
+  },
 });

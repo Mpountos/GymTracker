@@ -15,7 +15,7 @@ export default function LoginScreen()
   const handleLogin = async () => {
     if (!email || !password) 
     {
-      Alert.alert('Σφάλμα', 'Παρακαλώ συμπληρώστε όλα τα πεδία.');
+      Alert.alert('Error', 'Empty inputs.');
       return;
     }
 
@@ -23,13 +23,13 @@ export default function LoginScreen()
     try 
     {
       await signInWithEmailAndPassword(auth, email, password);
-      console.log('✅ Σύνδεση επιτυχής!');
+      console.log('Succesful Connection!');
       router.replace('/(tabs)');
     } 
     catch (error: any) 
     {
       console.error(error);
-      Alert.alert('Σφάλμα Σύνδεσης', 'Λάθος email ή κωδικός.');
+      Alert.alert('Error', 'Wrong email or password.');
     } 
     finally 
     {
@@ -40,7 +40,7 @@ export default function LoginScreen()
   return (
     <View style={globalStyles.container}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
-        <Text style={globalStyles.title}>GymTracker</Text>
+        <Text style={globalStyles.title}>Login to your Account</Text>
         
         <TextInput
           style={globalStyles.input}
@@ -54,19 +54,15 @@ export default function LoginScreen()
         
         <TextInput
           style={globalStyles.input}
-          placeholder="Κωδικός"
+          placeholder="Password"
           placeholderTextColor={Colors.subtext}
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
 
-        <TouchableOpacity 
-          style={globalStyles.primaryButton} 
-          onPress={handleLogin}
-          disabled={loading}
-        >
-          {loading ? ( <ActivityIndicator color="#fff" /> ) : ( <Text style={globalStyles.buttonText}>Είσοδος</Text> )}
+        <TouchableOpacity style={globalStyles.primaryButton} onPress={handleLogin} disabled={loading}>
+          {loading ? ( <ActivityIndicator color="#fff" /> ) : ( <Text style={globalStyles.buttonText}>Enter</Text> )}
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push('/register')}>

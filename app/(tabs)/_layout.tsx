@@ -9,7 +9,7 @@ export default function TabLayout()
         headerTitleAlign: 'center'
     }}>
       <Tabs.Screen
-        name="create-plan"
+        name="createPlan"
         options={{
           title: 'Workouts',
           tabBarIcon: ({ color }) => <Ionicons name="add-circle-outline" size={24} color={color} />,
